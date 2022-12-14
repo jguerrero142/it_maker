@@ -1,0 +1,42 @@
+.container {
+  margin: 20px auto;
+  background-color: rgba(206, 205, 205, 0.932);
+  width: 98%;
+  border-radius: 10px;
+  height: 90%;
+  display: block;
+  align-items: center;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.options{
+  display: block;
+  margin: 20px 20px;
+}
+
+.title{
+  cursor: default;
+}
+
+.img{
+  height: 60px;
+  width: 120px;
+}
+
+.logout{
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+@media screen and (max-width: 900px) {
+  .container {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+}

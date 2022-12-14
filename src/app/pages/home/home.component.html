@@ -1,0 +1,19 @@
+
+<mat-toolbar>
+    <img class="img" src="assets/icon.ico" alt="" />
+    <span *ngIf="auth.user$ | async as user">Bienvenido - {{ user.name }} </span>
+    <span class="example-spacer"></span>
+    <button class="logout" (click)='logOut()' mat-icon-button aria-label="logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+    <div class="options">
+          <button class="title" mat-raised-button>Crear Usuario</button>
+          <button (click)="openDialog()" mat-raised-button color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+    </div>
+    <app-cards></app-cards>
+</div>

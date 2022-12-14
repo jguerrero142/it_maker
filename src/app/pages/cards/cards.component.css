@@ -1,0 +1,72 @@
+/* CARDS */
+
+.cards {
+    display: flex;
+    width: 90%;
+    padding: 10px;
+    margin: 25px 25px;
+  }
+  
+  .cards .card {
+    background: rgb(0, 153, 41);
+    background: linear-gradient(
+      90deg,
+      #5ccb5f 1%,
+      #009929 100%
+    );
+    color: white;
+    width: 300px;
+    height: 350px;
+    border-radius: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.3), -4px 0 10px rgba(0, 0, 0, 0.2),
+      -5px 0 10px rgba(0, 0, 0, 0.1);
+  
+    transition: all 0.3s ease;
+  }
+  
+  .card a {
+    color: yellow;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .cards .card a:hover {
+    color: lightyellow;
+  }
+  
+  .cards .card .header {
+    flex: 1;
+  }
+  
+  .cards .card:hover {
+    margin-right: 10px;
+    transform: rotate(3deg) translateY(-15px);
+  }
+
+  
+  .cards .card .header .author{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .cards .card .header img {
+    width: 190px;
+    border-radius: 50%;
+  }
+  
+  .cards .card[class*="element"] {
+    margin-left: -100px;
+  }
+  
+  .element-1:hover,
+  .element-2:hover {
+    margin-left: -130px;
+  } 
+  
