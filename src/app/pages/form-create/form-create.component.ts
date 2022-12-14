@@ -109,6 +109,7 @@ export class FormCreateComponent implements OnInit {
      * Envia el usuario con la nueva informacion
      */
       this.store.dispatch(action.updateUser({user: user}))
+      this.store.dispatch(action.updateUser({user: user}))
       this.form = false;
       this.dialog.closeAll()
   }
