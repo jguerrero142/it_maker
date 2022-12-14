@@ -14,26 +14,40 @@ import { FormCreateComponent } from '../form-create/form-create.component';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
+
+  /**
+     * Variable que obtiene todos los usuarios para renderizar la vista
+     */
   public usuarios: Users[] = [];
   
   constructor(private store: Store<AppState>,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    /**
+     * Metodo que obtiene los usuarios
+     */
     this.getUsers();
   }
 
   getUsers(){
+    /**
+     * Se obtiene el valor de los usuario del estado
+     */
       this.store.select('user').subscribe( d =>{
         this.usuarios = d.users
       })
   }
-
+/**
+     * Se envia al estado el usuario seleccionado
+     */
   updateUser(user: Users){
     this.store.dispatch(action.selectUser({id: user.id}))
     this.openDialog();
   }
-
+/**
+     * Se inicia el dialogo para actualizar los datos del usuario
+     */
   openDialog(){
     this.dialog.open(FormCreateComponent,{
       width: '450px',

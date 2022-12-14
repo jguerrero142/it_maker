@@ -2,15 +2,19 @@ import { ActionReducerMap, Action } from '@ngrx/store';
 
 //Reducers Store Ngrx
 import * as user from './user.reducer';
-// import * as reducers from './reducer';
 
-// import * as set from '../auth/auth.reducer';
-// import * as ingreso from '../ingre-egre/ingreso.reducer';
-
-
+/**
+ * Se importa el estado de la aplicacion
+ * 
+ */
 export interface AppState {
     user: user.State
 }
+
+/**
+ * Se Relaciona el user que se comunica con los actions del estado
+ * 
+ */
 
 export const appStore: ActionReducerMap<AppState> = {
     user: user.usersReducer

@@ -1,5 +1,9 @@
 export class Users{
 
+    /**
+ * Clase con la dinamica de se alterada en su propiedades
+ * 
+ */
     static usersJson(obj: any){
         return new Users(
             obj['id'],

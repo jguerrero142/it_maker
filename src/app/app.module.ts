@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule } from '@auth0/auth0-angular';
 import { AppRoutingModule } from './app-routing.module';
+
+/* Modulos de librerias*/
 import { AngularMaterialModule } from './angular-material.module';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { AuthModule } from '@auth0/auth0-angular';
+
+/* Importancion de la NGRX */
 import { StoreModule } from '@ngrx/store';
 import { appStore } from './shared/store/appStore';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 import { environment } from '../environments/environment';
-import { NgxSpinnerModule } from "ngx-spinner";
+
 @NgModule({
   declarations: [
     AppComponent
