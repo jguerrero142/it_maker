@@ -6,7 +6,7 @@ import { AngularMaterialModule } from '../angular-material.module';
 import { CardsComponent } from './cards/cards.component';
 import { FormCreateComponent } from './form-create/form-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PagesRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ]
 })
 export class PagesModule { }

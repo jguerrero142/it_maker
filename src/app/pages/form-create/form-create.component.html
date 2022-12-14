@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!form" class="container">
 <h1 mat-dialog-title>Crear Usuario</h1>
 <form  (ngSubmit)="onSubmit()" [formGroup]="contactForm">
   <div class="name">
@@ -10,8 +10,6 @@
       class="alert alert-danger">
       {{ contactForm.get('name')?.errors?.['minlength']?.requiredLength}} characters.</div>
   </div>
-
-
   <div class="jobs">
     <label for="job" class="form-label">Profesion</label>
     <input type="text" class="form-control" id="job" name="job" formControlName="job"
@@ -26,4 +24,43 @@
   </div>     
 </form>
 </div>
+<!-- Formulario de Actualizar -->
+
+<div *ngIf="form" class="container">
+  <h1 mat-dialog-title>Actualizar Usuario</h1>
+  <form  (ngSubmit)="onSubmitUpdate()" [formGroup]="contactForm">
+    <div class="name">
+      <label for="name" class="form-label">Nombre :</label>
+      <input type="text" class="form-control" id="name" name="name" required formControlName="name">
+      <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']"
+        class="alert alert-danger">El nombre es requerido.</div>
+      <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']"
+        class="alert alert-danger">
+        {{ contactForm.get('name')?.errors?.['minlength']?.requiredLength}} characters.</div>
+    </div>
+  
+  
+    <div class="jobs">
+      <label for="job" class="form-label">Profesion</label>
+      <input type="text" class="form-control" id="job" name="job" formControlName="job"
+        required>
+  
+      <div *ngIf="contactForm.get('job')?.touched && contactForm.get('job')?.errors?.['required']"
+        class="alert alert-danger">La profesion es requerida.</div>
+    </div>
+
+    <div class="email">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" class="form-control" id="email" name="email" formControlName="email"
+        required>
+  
+      <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
+        class="alert alert-danger">El email es requerida.</div>
+    </div>
+  
+    <div class="buton">
+      <button type="submit" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Send</button>
+    </div>     
+  </form>
+  </div>
   

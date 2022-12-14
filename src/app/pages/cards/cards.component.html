@@ -1,11 +1,11 @@
 <div class="cards">
     <!-- CARD -->
-    <div *ngFor="let card of usuarios" class="card">
+    <div *ngFor="let card of usuarios; index as i" class="card">
         <div class="header">
             <div class="author">
                 <a href="#">
                 <img [src]="card.avatar" alt="" />
-                <span>{{ card.fullName}}
+                <span>{{ card.first_name}}
                 </span>
                 </a>
             </div>            
@@ -14,8 +14,8 @@
             <div class="date">{{ card.email }}</div>
             <section>
                 <div class="example-button-row">
-                  <button mat-flat-button color="primary">Editar</button>
-                  <button mat-flat-button color="warn">Eliminar</button>
+                  <button (click)="updateUser(card)" mat-flat-button color="primary">Editar</button>
+                  <button (click)="deleteUser(card.id)" mat-flat-button color="warn">Eliminar</button>
                 </div>
               </section>
         </div>

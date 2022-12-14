@@ -11,14 +11,11 @@ export class Users{
     }
 
     constructor(
-        public id: number,
-        public email: string,
-        public first_name: string,
-        public last_name: string,
-        public avatar: string,
+        public id: number ,
+        public email?: string | null| undefined,
+        public first_name?: string | null| undefined,
+        public last_name?: string | null| undefined,
+        public avatar?: string | null| undefined,
     ){}
 
-    get fullName(){
-        return `${this.first_name} ${this.last_name}`
-    }
 }
