@@ -1,6 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import * as actions from './user.action';
 
+
 /**
  * Se declara el estado de la variable users dentro del estado
  * 
@@ -22,17 +23,27 @@ export interface State {
     serial: number;
     loading: boolean;
     update: number;
+    user: Users | undefined
 }
 
 /**
  * Se inicializa el estado
  * 
  */
+
+const us = {
+    id: 0 ,
+    email: '',
+    first_name: '',
+    last_name: '',
+    avatar: ''
+}
 export const initialState: State = {
     users: [],
     serial: 0,
     loading: false,
-    update: 0
+    update: 0,
+    user: us
  }
 /**
  * Se declaran los reducer que modificaran el estado de la aplicacion
@@ -82,10 +93,10 @@ export const initialState: State = {
  * 
  */
     
-    on(actions.selectUser, (state, {id}) => ({ 
+    on(actions.selectUser, (state, {user , id}) => ({ 
         ...state,
         update: id,
-        user: [...state.users.filter(d => d.id == id)]
+        user: user
     })),
 
     /**
@@ -95,7 +106,7 @@ export const initialState: State = {
 
     on(actions.updateUser, (state, {user}) => ({ 
         ...state,
-        users: [ ...state.users]
+        user: user
     })),
 
     /**

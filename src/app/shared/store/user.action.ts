@@ -31,7 +31,7 @@ props<{ user: Users }>()
  * 
  */
 export const selectUser = createAction('[]select Users',
-props<{ id: number }>()                            
+props<{ user: Users, id: number }>()                            
 );
 
 /**

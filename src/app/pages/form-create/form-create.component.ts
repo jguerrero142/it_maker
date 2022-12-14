@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { Users } from 'src/app/shared/models';
 import { ServicesService } from 'src/app/shared/services/services.service';
 import { AppState } from 'src/app/shared/store/appStore';
 import * as action from '../../shared/store/user.action';
@@ -28,6 +28,8 @@ export class FormCreateComponent implements OnInit {
      * Variable que lleva el consecutivo de los usuarios cargados
      */
   public serial!: number
+  public usuario!: Users
+
   constructor(private readonly fb: FormBuilder,
                private service: ServicesService,
                public dialog: MatDialog,
@@ -44,8 +46,19 @@ export class FormCreateComponent implements OnInit {
      */
     this.store.select('user').subscribe(d =>{
       if(d.update > 0){
+        this.usuario = d.user!
         this.form = true
       }
+    })
+
+    this.onPathValue();
+  }
+
+  onPathValue(){
+    this.contactForm.patchValue({
+      name: this.usuario.first_name,
+      job: this.usuario.email,
+      email: this.usuario.email
     })
   }
 
@@ -82,24 +95,21 @@ export class FormCreateComponent implements OnInit {
     /**
      * Actualiza el usuario en la aplicacion
      */
-    this.store.select('user').subscribe(d =>{
-      this.serial = d.update      
-    })
-
-    const {name, job } = this.contactForm.value
+    const {name, job, email } = this.contactForm.value
       const user = {
-        id: this.serial,
-        email: 'george.bluth@reqres.in',
+        id: this.usuario.id,
+        email: email,
         first_name: name,
         last_name: job,
         fullName: job,
-        avatar: 'https://reqres.in/img/faces/3-image.jpg',
+        avatar: this.usuario.avatar,
       }
 
       /**
      * Envia el usuario con la nueva informacion
      */
       this.store.dispatch(action.updateUser({user: user}))
+      this.form = false;
       this.dialog.closeAll()
   }
 
@@ -110,6 +120,7 @@ export class FormCreateComponent implements OnInit {
     return this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       job: ['', [Validators.required]],
+      email: ['', [Validators.required]],
     })
   }
 

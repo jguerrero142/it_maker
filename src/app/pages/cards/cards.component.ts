@@ -42,7 +42,7 @@ export class CardsComponent implements OnInit {
      * Se envia al estado el usuario seleccionado
      */
   updateUser(user: Users){
-    this.store.dispatch(action.selectUser({id: user.id}))
+    this.store.dispatch(action.selectUser({user:user ,id: user.id}))
     this.openDialog();
   }
 /**
@@ -50,7 +50,7 @@ export class CardsComponent implements OnInit {
      */
   openDialog(){
     this.dialog.open(FormCreateComponent,{
-      width: '450px',
+      width: '550px',
       height: '280px',
       data: "rigth click"
     });
