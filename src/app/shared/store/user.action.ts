@@ -35,12 +35,18 @@ props<{ user: Users, id: number }>()
 );
 
 /**
- * Action actualiza el usuario seleccionado
+ * Action lleva la informacion del nuevo usuario al estado
  * 
  */
 export const updateUser = createAction('[]update Users',
 props<{ user: Users }>()                            
 );
+
+/**
+ * Action actualiza el usuario seleccionado
+ * 
+ */
+export const changeUser = createAction('[]update Users');
 
 /**
  * Action que elimina el usuario enviando por ID

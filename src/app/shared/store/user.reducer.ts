@@ -23,7 +23,7 @@ export interface State {
     serial: number;
     loading: boolean;
     update: number;
-    user: Users | undefined
+    user: Users
 }
 
 /**
@@ -106,8 +106,19 @@ export const initialState: State = {
 
     on(actions.updateUser, (state, {user}) => ({ 
         ...state,
-        user: user
+        user: user,
+        users: [...state.users.filter( d => d.id != user.id)]
     })),
+
+        /**
+ * Actualiza el usuario 
+ * 
+ */
+
+        on(actions.changeUser, state => ({ 
+            ...state,
+            users: [...state.users, state.user]
+        })),
 
     /**
  * Elimina el usuario enviando el ID
